@@ -4,6 +4,7 @@ import { Box, Button } from '@mui/material';
 class App extends Component {
     state={
         color : "red",
+        bool : true,
     }
 
     func1 = () => {
@@ -36,9 +37,20 @@ class App extends Component {
         })
     }
 
+    func6 = () => {
+        let off = this.state.bool;
+        this.setState({
+            bool : !off,
+        })
+    }
+
+    
+
     render() {
         return (
             <Box>
+                <Button onClick={this.func6}>{this.state.bool ? 'Active Toggle' : 'Cancel'}</Button>
+                <Box display={this.state.bool ? 'block' : 'none'}>
                 <h1 style={{"backgroundColor" : "#999", "padding" : '30px', "color" : this.state.color}}>Active</h1>
                 <h2 style={{"color" : this.state.color}}>Modal...</h2>
                 <Box display={'flex'} gap={"30px"}>
@@ -47,6 +59,7 @@ class App extends Component {
                     <Button onClick={this.func3} variant="outlined" color="success" type="button">green</Button>
                     <Button onClick={this.func4} variant="outlined" type="button">blue</Button>
                     <Button onClick={this.func5} variant="outlined" style={{"color" : "darkcyan", "borderColor" : "darkcyan"}} type="button">darkcyan</Button>
+                </Box>
                 </Box>
             </Box>
         );
